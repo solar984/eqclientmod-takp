@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EQUIScaler", "EQUIScaler\EQUIScaler.csproj", "{CA05E875-DD9D-44DA-AE3C-1308BF0AF4B3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CA05E875-DD9D-44DA-AE3C-1308BF0AF4B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA05E875-DD9D-44DA-AE3C-1308BF0AF4B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA05E875-DD9D-44DA-AE3C-1308BF0AF4B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA05E875-DD9D-44DA-AE3C-1308BF0AF4B3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {431FB564-BCA3-4D24-A96C-1E917F870D33}
+	EndGlobalSection
+EndGlobal

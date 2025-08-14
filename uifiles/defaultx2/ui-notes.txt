@@ -1,0 +1,48 @@
+- compass not working when enlarged, left alone
+
+
+This is a full 4k UI conversion mod for TAKP.  This is only for the windows client, I've only tested it on windows 10, and it's not release quality yet.  If you don't want to mess with ini and XML files then this probably isn't for you.  Please try the whole thing in its entirety if you're interested in it.  Don't try to merge this with an existing UI and don't apply this to your main game directory because you might break it and not be able to go back easily.  Make a copy of your game directory or download a new zip and set it up from scratch to try it.  All that out of the way, it works well for me.
+
+There are several parts to this setup.  First off, make sure you get the latest eqgame.dll from the wiki Getting Started page, same place where the client zip is posted.
+Then check that you have your eqclient.ini and other options files are already set up.  This means going all the way into the game and logging out so options and settings are written already.  Here are some of the important settings I recommend.
+
+[Defaults]
+VideoModeBitsPerPixel=32
+WindowedMode=FALSE
+UseD3DTextureCompression=FALSE
+TextureCache=FALSE
+AllLuclinPcModelsOff=TRUE <-- large performance boost even if you have a super fast 4k gaming PC
+[VideoMode]
+BitsPerPixel=32
+Width=3840
+Height=2160
+RefreshRate=120
+[Options]
+WindowedMode=FALSE
+MaxFPS=0
+MaxBGFPS=60
+MouseRightHanded=1
+MaxMouseLookFPS=40
+
+The UI skin is called defaultx2.  I tried to keep it as default as possible.  It can be loaded with the usual '/load defaultx2 0' command once it's in the uifiles directory.  You need to let it reset the layout, don't load it with the 1.  Things like the options and other large windows will be cropped and you won't be able to interact with the offscreen parts if you don't do this.  The sizes and positions end up jumbled up in the corner when you reset the positions.  This is a bug that I would like to eventually fix.
+The way I made this UI is by brute force doubling the size of things including all of the images.  This is probably wasteful for some things and can be done better.
+The compass window is not enlarged, it depends on the size of the image and it didn't work when I doubled it so I skipped this one for now.
+
+The final part is the font mod.  To use this install my version.dll file into your EQ directory, the same directory that contains eqgame.exe, not the uifiles or defaultx2 directory.  To uninstall it, remove the version.dll file from the EQ directory.  Normally, the windows client uses "Arial" font at point sizes 10, 12, 14, 15, 16, 20 and 24.  This mod changes the font to "Palatino Linotype" at sizes 24, 25, 26, 28, 28, 30, 32 respectively.  That's font 0-6 in the SIDL files or the /chatfontsize command.  I have no idea if this font even exists on anything but my system, but seems to come with windows 10.  I tried every font on my system and most of them didn't work right for this.  Even the sizes are just things I figured out by trial and error.  I want to investigate this problem more and would have preferred to use the Arial font, but to get things working I settled on building around this other font and I tweaked the sizes of things around it.  Using a different font might be possible later.  The names of NPCs and players above their heads are also getting this font makeover.
+
+Mods to individual UI windows:
+
+- Inventory slots: stackable items have a little inset label in the bottom right.  The size and position of these are hardcoded and needed a fixup.
+
+- Cursor attachment: when dragging an inventory slot with stackable quantity, same deal as the inventory slots.
+
+- List windows for skills and for selecting skills on the abilities tab.  Both of these had a hardcoded height for list items that I changed to use the font height.
+
+- Tabs like you see in the options and AA windows have a hardcoded tab height that I tweaked for the larger font.
+
+- Title bars on all windows, fixed up the minimize and close button positions as well as the title text.
+
+- Inventory containers compute their height on their own and don't read it from the SIDL.  I adjusted this calculation to work better with the double sized elements.
+
+- The player window with your name and resource gauges shows a red rectangle flashing when you activate auto attack.  It's difficult to see the rectangle at high framerate and high resolution so I reworked this to be smoother and more visible.  I was trying to keep this in the same default UI style and my mod looks similar to what you get on the modern live client.
+

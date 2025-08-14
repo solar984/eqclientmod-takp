@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Screens>
+	<Screen item="AAWindow">
+		<Location>
+			<X>1708</X>
+			<Y>550</Y>
+		</Location>
+	</Screen>
+	<Screen item="ActionsWindow">
+		<Location>
+			<X>198</X>
+			<Y>1693</Y>
+		</Location>
+	</Screen>
+	<Screen item="AlarmWnd">
+		<Location>
+			<X>121</X>
+			<Y>1358</Y>
+		</Location>
+	</Screen>
+	<Screen item="BankWnd">
+		<Location>
+			<X>1181</X>
+			<Y>294</Y>
+		</Location>
+	</Screen>
+	<Screen item="BazaarSearchWnd">
+		<Location>
+			<X>314</X>
+			<Y>350</Y>
+		</Location>
+		<Size>
+			<CX>1091</CX>
+			<CY>1228</CY>
+		</Size>
+	</Screen>
+	<Screen item="BazaarWnd">
+		<Location>
+			<X>2182</X>
+			<Y>155</Y>
+		</Location>
+		<Size>
+			<CX>790</CX>
+			<CY>1509</CY>
+		</Size>
+	</Screen>
+	<Screen item="BookWindow">
+		<Location>
+			<X>2162</X>
+			<Y>750</Y>
+		</Location>
+	</Screen>
+	<Screen item="BreathWindow">
+		<Location>
+			<X>1038</X>
+			<Y>944</Y>
+		</Location>
+	</Screen>
+	<Screen item="BuffWindow">
+		<Location>
+			<X>3548</X>
+			<Y>160</Y>
+		</Location>
+		<Size>
+			<CX>291</CX>
+			<CY>497</CY>
+		</Size>
+	</Screen>
+	<Screen item="BugReportWindow">
+		<Location>
+			<X>548</X>
+			<Y>898</Y>
+		</Location>
+		<Size>
+			<CX>1180</CX>
+			<CY>700</CY>
+		</Size>
+	</Screen>
+	<Screen item="CastingWindow">
+		<Location>
+			<X>533</X>
+			<Y>1200</Y>
+		</Location>
+	</Screen>
+	<Screen item="CastSpellWnd">
+		<Location>
+			<X>0</X>
+			<Y>1003</Y>
+		</Location>
+	</Screen>
+	<Screen item="ChatWindow">
+		<Location>
+			<X>1433</X>
+			<Y>1696</Y>
+		</Location>
+		<Size>
+			<CX>1098</CX>
+			<CY>464</CY>
+		</Size>
+	</Screen>
+	<Screen item="ColorPickerWnd">
+		<Location>
+			<X>2983</X>
+			<Y>146</Y>
+		</Location>
+	</Screen>
+	<Screen item="FeedbackWindow">
+		<Location>
+			<X>568</X>
+			<Y>950</Y>
+		</Location>
+		<Size>
+			<CX>800</CX>
+			<CY>400</CY>
+		</Size>
+	</Screen>
+	<Screen item="FileSelectionWnd">
+		<Location>
+			<X>2268</X>
+			<Y>865</Y>
+		</Location>
+		<Size>
+			<CX>706</CX>
+			<CY>809</CY>
+		</Size>
+	</Screen>
+	<Screen item="FriendsWindow">
+		<Location>
+			<X>892</X>
+			<Y>877</Y>
+		</Location>
+	</Screen>
+	<Screen item="GemsGameWnd">
+		<Location>
+			<X>1439</X>
+			<Y>566</Y>
+		</Location>
+	</Screen>
+	<Screen item="GiveWnd">
+		<Location>
+			<X>2290</X>
+			<Y>794</Y>
+		</Location>
+	</Screen>
+	<Screen item="GroupWindow">
+		<Location>
+			<X>2522</X>
+			<Y>1822</Y>
+		</Location>
+	</Screen>
+	<Screen item="HelpWindow">
+		<Location>
+			<X>1247</X>
+			<Y>401</Y>
+		</Location>
+		<Size>
+			<CX>1299</CX>
+			<CY>1116</CY>
+		</Size>
+	</Screen>
+	<Screen item="HotButtonWnd">
+		<Location>
+			<X>2</X>
+			<Y>1655</Y>
+		</Location>
+	</Screen>
+	<Screen item="InspectWnd">
+		<Location>
+			<X>2379</X>
+			<Y>708</Y>
+		</Location>
+	</Screen>
+	<Screen item="InventoryWindow">
+		<Location>
+			<X>2978</X>
+			<Y>648</Y>
+		</Location>
+	</Screen>
+	<Screen item="ItemDisplayWindow">
+		<Location>
+			<X>2596</X>
+			<Y>32</Y>
+		</Location>
+		<Size>
+			<CX>949</CX>
+			<CY>461</CY>
+		</Size>
+	</Screen>
+	<Screen item="LoadskinWnd">
+		<Location>
+			<X>1900</X>
+			<Y>759</Y>
+		</Location>
+	</Screen>
+	<Screen item="LootWnd">
+		<Location>
+			<X>1163</X>
+			<Y>169</Y>
+		</Location>
+		<Size>
+			<CX>240</CX>
+			<CY>1489</CY>
+		</Size>
+	</Screen>
+	<Screen item="MerchantWnd">
+		<Location>
+			<X>2148</X>
+			<Y>52</Y>
+		</Location>
+		<Size>
+			<CX>250</CX>
+			<CY>1645</CY>
+		</Size>
+	</Screen>
+	<Screen item="MusicPlayerWnd">
+		<Location>
+			<X>2353</X>
+			<Y>568</Y>
+		</Location>
+	</Screen>
+	<Screen item="NoteWindow">
+		<Location>
+			<X>2284</X>
+			<Y>882</Y>
+		</Location>
+	</Screen>
+	<Screen item="OptionsWindow">
+		<Location>
+			<X>2164</X>
+			<Y>140</Y>
+		</Location>
+		<Size>
+			<CX>800</CX>
+			<CY>966</CY>
+		</Size>
+	</Screen>
+	<Screen item="PetInfoWindow">
+		<Location>
+			<X>290</X>
+			<Y>35</Y>
+		</Location>
+	</Screen>
+	<Screen item="PlayerNotesWindow">
+		<Location>
+			<X>2164</X>
+			<Y>654</Y>
+		</Location>
+		<Size>
+			<CX>806</CX>
+			<CY>812</CY>
+		</Size>
+	</Screen>
+	<Screen item="PlayerWindow">
+		<Location>
+			<X>3592</X>
+			<Y>0</Y>
+		</Location>
+	</Screen>
+	<Screen item="RaidOptionsWindow">
+		<Location>
+			<X>1499</X>
+			<Y>697</Y>
+		</Location>
+	</Screen>
+	<Screen item="RaidWindow">
+		<Location>
+			<X>2210</X>
+			<Y>10</Y>
+		</Location>
+		<Size>
+			<CX>740</CX>
+			<CY>1682</CY>
+		</Size>
+	</Screen>
+	<Screen item="SelectorWindow">
+		<Location>
+			<X>3038</X>
+			<Y>2</Y>
+		</Location>
+	</Screen>
+	<Screen item="SkillsSelectWindow">
+		<Location>
+			<X>329</X>
+			<Y>1160</Y>
+		</Location>
+		<Size>
+			<CX>400</CX>
+			<CY>480</CY>
+		</Size>
+	</Screen>
+	<Screen item="SkillsWindow">
+		<Location>
+			<X>2105</X>
+			<Y>22</Y>
+		</Location>
+		<Size>
+			<CX>873</CX>
+			<CY>1673</CY>
+		</Size>
+	</Screen>
+	<Screen item="SocialEditWnd">
+		<Location>
+			<X>1324</X>
+			<Y>1065</Y>
+		</Location>
+	</Screen>
+	<Screen item="SpellBookWnd">
+		<Location>
+			<X>415</X>
+			<Y>854</Y>
+		</Location>
+	</Screen>
+	<Screen item="TargetWindow">
+		<Location>
+			<X>2523</X>
+			<Y>1700</Y>
+		</Location>
+	</Screen>
+	<Screen item="TrackingWnd">
+		<Location>
+			<X>1</X>
+			<Y>33</Y>
+		</Location>
+		<Size>
+			<CX>294</CX>
+			<CY>968</CY>
+		</Size>
+	</Screen>
+	<Screen item="TradeWnd">
+		<Location>
+			<X>2399</X>
+			<Y>725</Y>
+		</Location>
+	</Screen>
+	<Screen item="TrainWindow">
+		<Location>
+			<X>1289</X>
+			<Y>766</Y>
+		</Location>
+	</Screen>
+	<Screen item="CompassWindow">
+		<Location>
+			<X>1867</X>
+			<Y>1</Y>
+		</Location>
+	</Screen>
+</Screens>
+
