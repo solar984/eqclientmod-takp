@@ -19,17 +19,21 @@ You can test that it's working by typing `/eqclientmod` in game which should giv
 
 # Mods
 
+
 ### Disable Gamma Change
 The game has a gamma slider in it but it does it in a really annoying way that changes the desktop gamma.  It tries to restore it when the game exits but this doesn't always happen with multiple clients and crashes.
 This mod disables the gamma functionality by detouring the function that would do this and instead doing nothing.  If you like the gamma, make sure you edit `eqclientmod.ini` and disable this mod.
 
+
 ### CommandHandler
 This mod adds the extra command handling that some of the other hacks use but it's not strictly necessary to enable this to use the other hacks.  Basic commands included: /eqclientmod /crash
+
 
 ### Player Window Auto Attack Indicator
 This makes the auto attack status more visible in the border of the player window (the one with your name and health/mana).
 The rectangle around the inside of the window is called a lasso here, you can use LassoThickness to adjust how thick the rectangle is.
 Set ColorFunction to 1 for a red/white pulsing effect or 2 for a rainbow effect.  Set ColorSpeed to control how fast the colors cycle.
+
 
 ### Field of View
 Normally EQ expects to render to a 4:3 display and anything wider results in a zoomed in telescope effect (same horizontal field of vision, smaller vertical).
@@ -37,19 +41,24 @@ This mod changes the calculation so the horizontal field of view can expand at w
 authentic experience - it's tied to game effects like magnification spells and intoxication (which reduce the field of view) as well as some buffs that increase the field of view.
 You can forcefully set the FoV with the /fov command but be aware that it will change again when one of these effects happens.
 
+
 ### Autofire
 This adds an /autofire toggle command that keeps spamming range attack.  It is simplistic and doesn't interact with targets or regular auto attack so you need to take care to turn auto attack on and off yourself when switching to/from ranged attacks.
 Autofire will turn itself off if there is no target when it next tried to attack, but it is not totally safe and you can set a new target and accidentally shoot it.  This is a useful feature of it for me but may not be for everybody.
 
+
 ### Character Select Rotation
 This hack makes the character selection screen rotation smooth.  If you are using some kind of FPS limiter I recommend not doing that, because this looks way better (to me).
+
 
 ### Autofollow
 This mod improves /follow reliability.  There is logic in /follow to turn run mode on and off and this actually makes your character crash out of the game if your framerate is high enough.
 There is also a smooth turning function to circle around to the followed target which is framerate dependent and causes follow failures.  Both of these things are disabled by this mod.
 
+
 ### Hidecorpse Looted
 This adds /hidecorpses LOOTED like what is available in newer clients.
+
 
 ### Farclip
 This increases the draw distance so you can see farther ahead.  This has a performance impact and is really bad in some zones.  
@@ -58,9 +67,11 @@ ExtendFog moves the fog out to the edge of the normal clip plane when underwater
 The command /uval will toggle a feature called UseVisActorList.  Normally the game doesn't update actors (mobs) that are far away or out of view, so they appear to drop from the sky once you get close enough and they finally get updated positions.
 This toggle will make it so all actors are always updated which looks nicer especially with extended draw distance but it has a performance cost in zones with many actors.  There is also a limit to how far the server sends movement updates so the benefit of this is limited.
 
+
 ### Trig functions
 This hack improves the quality of the trigonometry functions used in some places, smoothing out mouse control.
 This isn't my own work, I copied it from the dll used by Project Quarm.
+
 
 ### 4K friendly double sized UI
 To use this you need to copy uifiles/defaultx2 to your uifiles directory.
@@ -75,8 +86,10 @@ You can use this at 2560x1600 too but it might be a little crowded.  This is pre
 It is not possible to have a 1.5 or other fractional scale, just 2x, 3x etc.
 Currently there is an issue with the starting city and deity selection windows during character creation not being large enough.
 
-# Nameplate
+
+### Nameplate
 Changes nameplate behavior to make them always visible, not hidden with distance.  This is helpful together with the farclip hack.  There is also a scaling option which is useful with the defaultx2 4K UI.
 
-# Buff window tooltips
+
+### Buff window tooltips
 This hack adds remaining time and counters to the tooltips in the buff window.
