@@ -93,3 +93,7 @@ Changes nameplate behavior to make them always visible, not hidden with distance
 
 ### Buff window tooltips
 This hack adds remaining time and counters to the tooltips in the buff window.
+
+
+### Debug
+This hack writes dbg-XXX.txt files with the process id in the filename.  It is not useful for general play but I use this during development and to diagnose client crashes.
