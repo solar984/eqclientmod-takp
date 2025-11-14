@@ -13,10 +13,13 @@
 int attack_speed_mod = -20;
 int autofire = 0;
 
+int *TargetPlayer = (int *)0x007F94EC;
+int LastTarget = 0;
+bool DisableOnTargetChange = false;
+
 class AttackSpeed;
 typedef int(__thiscall *_EQPlayer__ModifyAttackSpeed)(AttackSpeed *this_ptr, int speed, int quiver);
 _EQPlayer__ModifyAttackSpeed EQPlayer__ModifyAttackSpeed_Trampoline;
-
 
 class AttackSpeed
 {
@@ -66,17 +69,32 @@ void RangedAttack()
 	EQPlayer__DoAttack(*LocalPlayer, 11, 0, *TargetPlayer);
 }
 
+typedef char(__thiscall *_EverQuest__SetAutoAttack)(int thisptr, char val);
+_EverQuest__SetAutoAttack EverQuest__SetAutoAttack_Trampoline;
+
 void set_autofire(int state)
 {
 	char buf[50];
 	autofire = state;
-	snprintf(buf, 50, "Autofire is %s.", autofire ? "on" : "off");
-	EverQuestObject->dsp_chat(buf, 281, 0);
+	snprintf(buf, 50, "Auto fire %s.", autofire ? "on" : "off");
+	EverQuestObject->dsp_chat(buf, 13, 0);
 
 	if (autofire)
 	{
+		LastTarget = *TargetPlayer;
+		EverQuest__SetAutoAttack_Trampoline(0x798540, 0);
 		RangedAttack();
 	}
+}
+
+char __fastcall EverQuest__SetAutoAttack_Detour(int thisptr, int unused, char val)
+{
+	if (val && autofire)
+	{
+		set_autofire(0);
+	}
+
+	return EverQuest__SetAutoAttack_Trampoline(thisptr, val);
 }
 
 void command_autofire(void *LocalPlayer, char *text, char *cmd, char *&sep)
@@ -99,20 +117,25 @@ void command_autofire(void *LocalPlayer, char *text, char *cmd, char *&sep)
 	set_autofire(autofire ? 0 : 1);
 }
 
+int CheckTarget()
+{
+	if (!autofire) return 0;
+
+	if (!*TargetPlayer || (DisableOnTargetChange && LastTarget != *TargetPlayer))
+	{
+		set_autofire(0);
+		return 0;
+	}
+	LastTarget = *TargetPlayer;
+
+	return 1;
+}
+
 void ResetRangedAttackButton2()
 {
-	int *TargetPlayer = (int *)0x007F94EC;
-
-	if (autofire)
+	if (autofire && CheckTarget())
 	{
-		if (!*TargetPlayer)
-		{
-			set_autofire(0);
-		}
-		else
-		{
-			RangedAttack();
-		}
+		RangedAttack();
 	}
 }
 
@@ -127,16 +150,26 @@ __declspec(naked) void ResetRangedAttackButton()
 	__asm {jmp eax};
 }
 
+typedef void(__thiscall *_EQ_Character__DoPassageOfTime)(int thisptr);
+_EQ_Character__DoPassageOfTime EQ_Character__DoPassageOfTime_Trampoline;
+void __fastcall EQ_Character__DoPassageOfTime_Detour(int thisptr)
+{
+	CheckTarget();
+	EQ_Character__DoPassageOfTime_Trampoline(thisptr);
+}
+
 void LoadAutofireHack()
 {
 	bool enable = true;
 
 #ifdef INI_FILE
 	char buf[2048];
-	const char *desc = "This mod adds an /autofire command which spams range attack.  It will turn off itself if the target is dead or cleared but be aware that it's not immediate, it only turns off when the button resets and it notices the lack of a target.  It's best to make a hotkey containing /autofire to toggle it with and watch where you're shooting especially when switching targets.";
+	const char *desc = "This mod adds an /autofire command which spams range attack.  It will turn off itself if the target is dead or cleared.";
 	WritePrivateProfileStringA("Autofire", "Description", desc, INI_FILE);
 	GetINIString("Autofire", "Enabled", "TRUE", buf, sizeof(buf), true);
 	enable = ParseINIBool(buf);
+	GetINIString("Autofire", "DisableOnTargetChange", "FALSE", buf, sizeof(buf), true);
+	DisableOnTargetChange = ParseINIBool(buf);
 #endif
 
 	Log("LoadAutofireHack(): hack is %s", enable ? "ENABLED" : "DISABLED");
@@ -154,6 +187,10 @@ void LoadAutofireHack()
 		intptr_t addr = (intptr_t)ResetRangedAttackButton - (intptr_t)0x004C1E80 - 5;
 		*((intptr_t *)(code + 1)) = addr;
 		Patch((void *)0x004C1E80, code, 7);
+
+		EverQuest__SetAutoAttack_Trampoline = (_EverQuest__SetAutoAttack)DetourWithTrampoline((void *)0x005493B5, EverQuest__SetAutoAttack_Detour, 10);
+
+		EQ_Character__DoPassageOfTime_Trampoline = (_EQ_Character__DoPassageOfTime)DetourWithTrampoline((void *)0x004C131D, EQ_Character__DoPassageOfTime_Detour, 6);
 	}
 }
 #endif

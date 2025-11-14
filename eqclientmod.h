@@ -20,7 +20,7 @@ typedef int64_t int64;
 
 #define INI_FILE ".\\eqclientmod.ini"
 
-#define BUILD_VERSION "SOLAR_TAKP_2025081600"
+#define BUILD_VERSION "SOLAR_TAKP_2025111400"
 #define COMMAND_HANDLER //
 #define PLAYERWINDOW_ATTACK_INDICATOR //
 #define FOV_HACK //

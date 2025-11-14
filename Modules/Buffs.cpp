@@ -5,6 +5,7 @@
 #include "common.h"
 #include "util.h"
 #include "structs.h"
+#include "eq_functions.h"
 
 class BuffsHack;
 typedef int(__thiscall *_EQ_Character__FindAffectSlot)(BuffsHack *this_ptr, __int16 spell_id, int caster_player, int *result_slotnum, int dontremove);
@@ -12,6 +13,38 @@ _EQ_Character__FindAffectSlot EQ_Character__FindAffectSlot_Trampoline;
 
 typedef int16(__thiscall *_EQ_Character__CalcAffectChange)(void *this_ptr, EQ_Spell *spelldata, unsigned __int8 level, unsigned __int8 slot_num, void *buff);
 _EQ_Character__CalcAffectChange EQ_Character__CalcAffectChange;
+
+typedef void (*_EQ_Character__RemovePCAffectex)(EQ_PC *pc, SpellBuff_Struct *buff, int tell_server);
+
+// struct SpellBuff_Struct *__thiscall EQ_Character::GetEffect(EQ_Character *this, __int16 slotnum)
+typedef struct SpellBuff_Struct *(__fastcall *_EQ_Character__GetEffect)(int thisptr, int unused, int16 slotnum);
+_EQ_Character__GetEffect EQ_Character__GetEffect = (_EQ_Character__GetEffect)0x004C465A;
+
+typedef int(__fastcall *_EQ_Character__ProcessAffects)(int thisptr);
+_EQ_Character__ProcessAffects EQ_Character__ProcessAffects_Trampoline;
+int __fastcall EQ_Character__ProcessAffects_Detour(int thisptr)
+{
+	char buf[200];
+	struct SpellBuff_Struct *buff = EQ_Character__GetEffect(thisptr, 0, 0);
+
+	if (buff->bufftype >= 2)
+	{
+		sprintf(buf, "EQ_Character__ProcessAffects_Detour 1 buff0 duration %d", buff->duration);
+		EverQuestObject->dsp_chat(buf, 269, 1);
+	}
+
+	int ret = EQ_Character__ProcessAffects_Trampoline(thisptr);
+
+	if (buff->bufftype >= 2)
+	{
+		sprintf(buf, "EQ_Character__ProcessAffects_Detour 2 buff0 duration %d", buff->duration);
+		EverQuestObject->dsp_chat(buf, 269, 1);
+		sprintf(buf, ".", buff->duration);
+		EverQuestObject->dsp_chat(buf, 269, 1);
+	}
+
+	return ret;
+}
 
 class BuffsHack
 {
@@ -56,6 +89,8 @@ void LoadBuffsHack()
 	// .text:004C8028 040 E8 50 E5 FF FF                                call    EQ_Character__CalcAffectChange
 	addr = EQ_Character__CalcAffectChange_FindAffectSlot_Detour - (intptr_t)0x004C8028 - 5;
 	Patch((void *)(0x004C8028 + 1), &addr, 4);
+
+	EQ_Character__ProcessAffects_Trampoline = (_EQ_Character__ProcessAffects)DetourWithTrampoline((void *)0x004C7448, (void *)EQ_Character__ProcessAffects_Detour, 9);
 }
 
 #endif

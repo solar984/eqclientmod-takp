@@ -43,8 +43,7 @@ You can forcefully set the FoV with the /fov command but be aware that it will c
 
 
 ### Autofire
-This adds an /autofire toggle command that keeps spamming range attack.  It is simplistic and doesn't interact with targets or regular auto attack so you need to take care to turn auto attack on and off yourself when switching to/from ranged attacks.
-Autofire will turn itself off if there is no target when it next tried to attack, but it is not totally safe and you can set a new target and accidentally shoot it.  This is a useful feature of it for me but may not be for everybody.
+This adds an /autofire toggle command that keeps spamming range attack.
 
 
 ### Character Select Rotation

@@ -76,6 +76,10 @@ void Payload2()
 	extern void LoadTrigFunctionsHack();
 	LoadTrigFunctionsHack();
 #endif
+#ifdef BUFFS
+	extern void LoadBuffsHack();
+	LoadBuffsHack();
+#endif
 
 	// continue from normal program entry point, this never returns
 	((void (*)())entryPoint)();
