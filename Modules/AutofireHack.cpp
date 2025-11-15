@@ -63,10 +63,24 @@ void RangedAttack()
 	auto EQPlayer__DoAttack = (int(__thiscall *)(int, int, int, int)) 0x0050A0F8;
 	int *LocalPlayer = (int *)0x007F94CC;
 	int *TargetPlayer = (int *)0x007F94EC;
+	int DisplayObject = *(int *)0x007F9510;
+	int frameCurTime = *(int *)(DisplayObject + 200);
+	static int lastErrorTime = 0;
 
-	// ranged attack
-	*((char *)0x007CD844) = 0; // depress button
-	EQPlayer__DoAttack(*LocalPlayer, 11, 0, *TargetPlayer);
+	*((char *)0x007CD844) = 0; // depress button - we need to do this so we we get called again next frame
+	if (frameCurTime - lastErrorTime > 750)
+	{
+		int *attack_timer_ptr = (int *)(*(int *)(*LocalPlayer + 132) + 104);
+
+		int t1 = *attack_timer_ptr;
+		// ranged attack
+		EQPlayer__DoAttack(*LocalPlayer, 11, 0, *TargetPlayer);
+		int t2 = *attack_timer_ptr;
+		if (t1 == t2) // attack failed
+		{
+			lastErrorTime = frameCurTime; // start cooldown
+		}
+	}
 }
 
 typedef char(__thiscall *_EverQuest__SetAutoAttack)(int thisptr, char val);
